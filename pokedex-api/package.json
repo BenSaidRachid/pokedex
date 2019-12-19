@@ -1,0 +1,17 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "pokedex api",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Rachid Ben said",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
