@@ -1,29 +1,38 @@
 import React, {Component} from 'react';
-import { Container, Col, Row } from "react-bootstrap";
-import { api } from "./../helpers/index";
+import { Container, Col, Row, Card } from "react-bootstrap";
+import { api, utils } from "./../helpers";
+import PokemonCard from "./../components/Pokemon/Card";
 
 class Home extends Component {
-   
+    constructor(props) {
+        super(props);
+        this.state = {
+           pokemons: []
+        };
+    }
+
     componentDidMount() {
        this.getPokemons()
     }
 
     getPokemons = async () => {
         const pokemons = await api.getAll();
-        console.log(pokemons)
+        if(pokemons) {
+            this.setState({
+                pokemons: utils.sort(pokemons)
+            })
+        }
     }
    
     render() {
         return (
             <Container>
                 <Row>
-                    <Col sm={8}>sm=8</Col>
-                    <Col sm={4}>sm=4</Col>
-                </Row>
-                <Row>
-                    <Col sm>sm=true</Col>
-                    <Col sm>sm=true</Col>
-                    <Col sm>sm=true</Col>
+                   {this.state.pokemons.map(pokemon =>
+                    <Col key={pokemon.numéro}>
+                        <PokemonCard pokemon={pokemon} />
+                    </Col>
+                   )} 
                 </Row>
             </Container>
         );

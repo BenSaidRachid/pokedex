@@ -10,7 +10,7 @@ const api = {
             return pokemons;
         })
     },
-    getOneById: async function({id}) {
+    getOneById: async function(id) {
         return await axios.get(API_BASE_URL + urls.pokemons.getOne(id)).then(({data}) => {
             const {pokemon} = data;
             return pokemon;
