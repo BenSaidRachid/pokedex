@@ -13,7 +13,7 @@ const api = {
     getOneById: async function(id) {
         return await axios.get(API_BASE_URL + urls.pokemons.getOne(id)).then(({data}) => {
             const {pokemon} = data;
-            return pokemon;
+            return pokemon.length > 0 ? pokemon[0] : {};
         })
     }
 }

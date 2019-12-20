@@ -11,18 +11,26 @@ function getTypeImage(types) {
     for(let i = 0; i < types.length; i++) {
         const type = types[i][1].toLowerCase();
         const imagePath = `../../assets/type_pokemon/${type}.png`;
-        imageArr.push(imagePath)
+        imageArr.push(imagePath);
     }
     return imageArr;
 }
 
 function sort(arrObj) {
-    return arrObj.sort((a, b) => parseInt(a.ndex) - parseInt(b.ndex))
+    return arrObj.sort((a, b) => parseInt(a.ndex) - parseInt(b.ndex));
+}
+
+function filterPokemon(search, pokemons) {
+    const regex = new RegExp(`^${search}`, "i");
+    return pokemons.filter(function(pokemon) {
+        if(pokemon.nom.match(regex)) return pokemon;
+    })
 }
   
 export default {
     getPokemonType,
     getTypeImage,
-    sort
+    sort,
+    filterPokemon
 };
   

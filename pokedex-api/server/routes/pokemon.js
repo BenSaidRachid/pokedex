@@ -20,7 +20,7 @@ app.get('/:id([0-9]+)', (req, res) => {
     const { id } = req.params;
     if (fs.existsSync(data_path)) {
         const pokemons = require(data_path);
-        const pokemon = pokemons.filter(pokemon => pokemon.ndex === formatIdToNdex(parseInt(id)))
+        const pokemon = pokemons.filter(pokemon => pokemon.ndex === formatIdToNdex(parseInt(id)));
         if(pokemon.length > 0)
             res.status(200).send({pokemon});
         else
