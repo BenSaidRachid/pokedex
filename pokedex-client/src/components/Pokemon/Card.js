@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from "react-bootstrap";
-import { utils, urls } from "./../../helpers";
 import { Link } from "react-router-dom";
+import { utils, urls } from "./../../helpers";
 
 function PokemonCard({pokemon}) {
     const pokemonImgType = utils.getTypeImage(utils.getPokemonType(pokemon));

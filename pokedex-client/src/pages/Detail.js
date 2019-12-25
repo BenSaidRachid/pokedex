@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row, Alert } from "react-bootstrap";
 import { api, utils } from "./../helpers";
 
 class Detail extends Component {
@@ -28,7 +28,7 @@ class Detail extends Component {
         return (
             <Container>
                 {
-                    Object.entries(pokemon).length > 0 &&
+                    Object.entries(pokemon).length > 0 ?
                     <div>
                         <Row style={{justifyContent: "center", margin: "2rem", alignItems: "baseline"}}>
                             <h1 style={{marginRight: "2rem"}}>{pokemon.nom}</h1>
@@ -50,7 +50,7 @@ class Detail extends Component {
                                 
                             </div>
                         </Row>
-                    </div>
+                    </div> : <Row style={{margin: "5em"}}><Col><Alert variant="danger">No pokemon found</Alert></Col></Row>
                 }
             </Container>
         );

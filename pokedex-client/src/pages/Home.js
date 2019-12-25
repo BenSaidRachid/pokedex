@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row, Card, Alert } from "react-bootstrap";
 import { api, utils } from "./../helpers";
 import PokemonCard from "./../components/Pokemon/Card";
 import HEADER from './../assets/header.png';
@@ -57,11 +57,13 @@ class Home extends Component {
                         </div>
                     </Row>
                     <Row>
-                    {pokemonsFiltered.map(pokemon =>
-                        <Col key={pokemon.numéro}>
-                            <PokemonCard pokemon={pokemon} />
-                        </Col>
-                    )} 
+                    { pokemonsFiltered.length > 0 ?
+                        pokemonsFiltered.map(pokemon =>
+                            <Col key={pokemon.ndex}>
+                                <PokemonCard pokemon={pokemon} />
+                            </Col>
+                        ) : <Col><Alert variant="danger">No pokemon found</Alert></Col>
+                    } 
                     </Row>
                 </Container>
             </div>
